@@ -1,36 +1,24 @@
-function binarySearch(array, target) {
-   let left = 0;
-   let right = array.length - 1;
+function reverseString(string) {
+   //return Array.from(string).reverse().join('');
    
-   while (left <= right) {
-      let middle = Math.floor((left + right) / 2);
-
-      if (array[middle] === target)
-         return middle;
-
-      if (target < array[middle])
-         right = middle - 1;
-      else
-         left = middle + 1;
-   }
-
-   return -1;
 }
 
-// function binarySearch(array, target, left = 0, right = array.length - 1) {
-//    // We if that's true, it means that the array has less than element
-//    if (right < left)
-//       return -1;
+console.log(reverseString('hello'));
 
-//    let middle = Math.floor((left + right) / 2);
+// function numberOfVowels(string) {
+//    const vowels = ['a', 'e', 'o', 'u', 'i'];
+//    let count = 0;
 
-//    if (array[middle] === target)
-//       return middle;
+//    for (let s of string) {
+//       if (vowels.includes(s)) count++;
+//    }
 
-//    if (target < array[middle])
-//       return binarySearch(array, target, left, middle - 1);
-
-//    return binarySearch(array, target, middle + 1, right);
+//    return count;
 // }
 
-console.log(binarySearch([1, 3, 5, 6, 7], 5));
+// console.log(numberOfVowels('helleuo'));
+
+// const countVowels = str => Array.from(str)
+//   .filter(letter => 'aeiou'.includes(letter)).length;
+
+// console.log(countVowels('helleuo'));
