@@ -1,19 +1,19 @@
 function reverseString(str) {
-   let array = Array.from(str);
+    let array = Array.from(str);
 
-   reverse(array, left = 0, right = array.length - 1);
-   
-   function reverse(array, left, right) {
-      if (left > right) return array;
-     
-         let temp = array[left];
-         array[left++] = array[right];
-         array[right--] = temp;
+    reverse(array, left = 0, right = array.length - 1);
 
-         reverse(array, left, right);      
-   }
+    function reverse(array, left, right) {
+        if (left > right) return array;
 
-   return array.join('');
+        let temp = array[left];
+        array[left++] = array[right];
+        array[right--] = temp;
+
+        reverse(array, left, right);
+    }
+
+    return array.join('');
 }
 
 // hello -> oellh -> olleh
