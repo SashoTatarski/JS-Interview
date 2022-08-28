@@ -83,15 +83,24 @@ class Tree {
 
    // }
 
-   findMin(root) {
-      if (this.isLeaf(root))
-         return root.value;
+   max(node = tree.root) {
+      if (this.isLeaf(node))
+         return node.value;
 
-      let left = this.findMin(root.leftChild);
-      let right = this.findMin(root.rightChild);
+      this.max(node.leftChild);
 
+      return node.value;
+   }
 
-      return Math.min(Math.min(left, right), root.value);
+   findMin(node = tree.root) {
+      if (this.isLeaf(node))
+         return node.value;
+
+      let left = this.findMin(node.leftChild);
+      let right = this.findMin(node.rightChild);
+
+      // return the max between this node's value and the max of the left and right subtrees of this node.
+      return Math.min(Math.min(left, right), node.value);
    }
 
    height(root = tree.root) {
@@ -142,6 +151,20 @@ class Tree {
       console.log(root.value);
    }
 
+   // Mosh implementation
+   contains(node = tree.root, value) {
+      // Base case: If node is null, return false.
+      if (node === null) {
+         return false;
+      }
+      // Base case: If the value matches the value of the current node we're on, return true.
+      if (value === node.value) {
+         return true;
+      }
+      // return the logical or of contains for both left and right subtrees of the current node we're on.
+      return console.log(this.contains(node.leftChild, value) || contains(node.rightChild, value));
+   }
+   // My implementation
    find(value) {
       if (this.isEmpty())
          return console.log(false);
@@ -167,6 +190,74 @@ class Tree {
             return console.log(false);
 
          find(value, current);
+      }
+   }
+
+   areSiblings(parent, left, right) {
+      // Base case 1: If parent is null, we have a null tree and we return false.
+      if (parent === null)
+         return false;
+      // Base case 2: If parent is a leaf, we return false since we've reached the end of a subtree
+      // and know the siblings cannot exist here.
+
+      if (this.isLeaf(parent))
+         return false;
+
+      // Base case 3: If parent's left & right child aren't null, we check if they equal to the values
+      // we're looking to see if they're siblings.
+      if (parent.leftChild !== null && parent.rightChild !== null) {
+         // If both children equal to the values we're looking to see if they're siblings,
+         // we return true.
+         if ((parent.leftChild.value === left && parent.rightChild.value === right)
+            || (parent.leftChild.value == right && parent.rightChild.value == left)) {
+            return true;
+         }
+      }
+
+      // Assign a variable existsLeft the return value of this function on parent's left child, left, right.
+      // In other words, we continue to traverse down the left subtree and run this function on the left subtree
+      // of this parent node.
+      let existsLeft = this.areSiblings(parent.leftChild, left, right);
+      // Assign a variable existsRight the return value of this function on parent's right child, left, right.
+      // In other words, we continue to traverse down the right subtree and run this function on the right subtree
+      // of this parent node.
+      let existsRight = this.areSiblings(parent.rightChild, left, right);
+      // We propagate the logical or of both values all the way up to the root where we finally return the logical
+      // or between the root's subtrees.
+      return existsLeft || existsRight;
+   }
+
+   getAncestors(k) {
+      let list = [];
+      getAncestors(tree.root, list, k);
+      return console.log(list);
+
+      function getAncestors(parent, list, val) {
+         // Base case: if parent is null we've reached the end of a subtree where the value didn't
+         // exist and return it. We also return parent if it does equal to the value we're looking for.
+         if (parent === null || parent.value === val)
+            return parent;
+
+         // We traverse down the left subtree and check if we found the value in the left subtree.
+         let left = getAncestors(parent.leftChild, list, val);
+         // if so we add this current node's value to the list and continue propagating the status of
+         // the found value up the call stack.
+         if (left !== null && left.value === val) {
+            list.push(parent.value);
+            return left;
+         }
+
+         // We traverse down the right subtree and check if we found the value in the right subtree.
+         let right = getAncestors(parent.rightChild, list, val);
+         // if so we add this current node's value to the list and continue propagating the status of
+         // the found value up the call stack.
+         if (right !== null && right.value === val) {
+            list.push(parent.value);
+            return right;
+         }
+         // we return parent as a way to continue propagating back up the call stack if we havent
+         // found the value we're looking for.
+         return parent;
       }
    }
 
@@ -219,11 +310,18 @@ tree.insert(1);
 tree.insert(6);
 tree.insert(8);
 tree.insert(10);
+//tree.find(1);
+//tree.contains(1);
+//tree.getAncestors(1);
+console.log(tree.areSiblings(tree.root, 1, 6));
+//console.log(tree.findMin());
+//console.log(tree.max());
 //tree.size();
 //tree.traverseBreadthFirst();
 //tree.getNodesAtDistance(2);
 //console.log(tree.isBinarySearchTree(tree.root, 0, 1000));
-console.log(tree.countLeaves());
+//console.log(tree.countLeaves());
+
 
 
 // other.insert(7);
