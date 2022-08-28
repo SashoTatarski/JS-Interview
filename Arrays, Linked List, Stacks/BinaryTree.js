@@ -9,6 +9,26 @@ class Node {
 class Tree {
    root = null;
 
+   countLeaves(node = tree.root) {
+      if (node === null)
+         return 0;
+
+      if (this.isLeaf(node)) {
+         return 1;
+      }
+
+      // we return, and propagate up to the root, the number of leaves from left and right subtrees.
+      return this.countLeaves(node.leftChild) + this.countLeaves(node.rightChild);
+   }
+   // size() {
+   //    let total = 0;
+   //    for (let i = 0; i <= this.height(); i++) {
+   //       total += this.getNodesAtDistance(i);
+   //       //this.size();
+   //    }
+   //    return total;
+   // }
+
    traverseBreadthFirst() {
       for (let i = 0; i <= this.height(); i++) {
          for (let value of this.getNodesAtDistance(i))
@@ -28,8 +48,7 @@ class Tree {
             return;
 
          if (distance === 0) {
-            list.push(root.value);
-            return;
+            return root.value;
          }
 
          getNodesAtDistance(root.leftChild, distance - 1, list);
@@ -200,9 +219,11 @@ tree.insert(1);
 tree.insert(6);
 tree.insert(8);
 tree.insert(10);
-tree.traverseBreadthFirst();
+//tree.size();
+//tree.traverseBreadthFirst();
 //tree.getNodesAtDistance(2);
 //console.log(tree.isBinarySearchTree(tree.root, 0, 1000));
+console.log(tree.countLeaves());
 
 
 // other.insert(7);
