@@ -262,34 +262,23 @@ class Tree {
    }
 
    insert(value) {
-      let node = new Node(value);
+      if (this.isEmpty())
+         return this.root = new Node(value);
 
-      if (this.isEmpty()) {
-         this.root = node;
-         return
-      }
+      insert(this.root, value);
 
-      insert(value, this.root, node);
-      function insert(value, current, node) {
-         if (value < current.value) {
-            if (current.leftChild === null) {
-               current.leftChild = node;
-               return;
-            }
-            current = current.leftChild;
-         }
-         else {
-            if (current.rightChild === null) {
-               current.rightChild = node;
-               return;
-            }
+      function insert(root, value) {
+         if (!root) return new Node(value);
 
-            current = current.rightChild;
-         }
+         if (value > root.value)
+            root.rightChild = insert(root.rightChild, value);
+         else
+            root.leftChild = insert(root.leftChild, value);
 
-         insert(value, current, node);
+         return root;
       }
    }
+
 
    isEmpty() {
       return this.root == null;
