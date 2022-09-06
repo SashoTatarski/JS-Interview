@@ -4,12 +4,12 @@ function selectionSort(array, k = 0) {
 
     let min = array[k];
     let indexOfMin;
-    for (let i = k; i < array.length - 1; i++) {
+    for (let i = k; i < array.length - 1; i++)
         if (array[i + 1] < array[i]) {
             min = array[i + 1];
             indexOfMin = i + 1;
         }
-    }
+
 
     if (min < array[k])
         swap(k, indexOfMin);
