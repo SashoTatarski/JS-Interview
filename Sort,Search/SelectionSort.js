@@ -1,22 +1,30 @@
-function bubbleSort(items, k = 0) {
-    if (k === items.length - 1)
-        return console.log(items);
+function selectionSort(array, k = 0) {
+    if (k === array.length - 1)
+        return console.log(array);
 
-    for (let i = items.length - 1; i > k; i--)
-        if (items[i] < items[i - 1])
-            swap(i);
+    let min = array[k];
+    let indexOfMin;
+    for (let i = k; i < array.length - 1; i++) {
+        if (array[i + 1] < array[i]) {
+            min = array[i + 1];
+            indexOfMin = i + 1;
+        }
+    }
 
-    bubbleSort(items, ++k);
+    if (min < array[k])
+        swap(k, indexOfMin);
 
-    function swap(i) {
-        let temp = items[i - 1];
-        items[i - 1] = items[i];
-        items[i] = temp;
+    selectionSort(array, ++k);
+
+    function swap(k, indexOfMin) {
+        let temp = array[k];
+        array[k] = array[indexOfMin];
+        array[indexOfMin] = temp;
     }
 
 }
 
-bubbleSort([8, 2, 4, 1, 3]);
+selectionSort([8, 2, 3, 1, 4, 5]);
 
 // function selectionSort(items) {
 //     for (let i = 0; i < items.length - 1; i++) {

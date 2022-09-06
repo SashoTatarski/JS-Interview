@@ -1,4 +1,4 @@
-function insertionSort(items, k = 0) {
+function selectionSort(items, k = 0) {
     if (k === items.length - 1)
         return console.log(items);
 
@@ -6,7 +6,7 @@ function insertionSort(items, k = 0) {
         if (items[i] < items[i - 1])
             swap(i);
 
-    insertionSort(items, ++k);
+    selectionSort(items, ++k);
 
     function swap(j) {
         let temp = items[j - 1];
@@ -16,7 +16,7 @@ function insertionSort(items, k = 0) {
 
 }
 
-insertionSort([8, 1, 1, 10, 3, 5, 2]);
+selectionSort([8, 1, 1, 10, 3, 5, 2]);
 
 // function insertionSort(items) {
 //     for (let i = 0; i < items.length - 1; i++) {
