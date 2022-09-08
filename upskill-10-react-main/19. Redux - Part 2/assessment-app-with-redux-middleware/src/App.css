@@ -1,0 +1,9 @@
+body {
+  color: #212121;
+  background-color: #dcdcdc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app {
+  margin: 1rem;
+}

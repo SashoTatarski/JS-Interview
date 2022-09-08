@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    window.onload = () => {
+      const head = document.createElement("title");
+      const headText = document.createTextNode("Page Title");
+      head.appendChild(headText);
+      document.head.appendChild(head);
+
+      const heading = document.createElement("h1");
+      const headingText = document.createTextNode("Page Heading");
+      heading.appendChild(headingText);
+      document.body.appendChild(heading);
+
+      const anchor = document.createElement("a");
+      anchor.setAttribute("href", "#");
+      const anchorText = document.createTextNode("Click me!");
+      anchor.appendChild(anchorText);
+
+      document.body.appendChild(anchor);
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

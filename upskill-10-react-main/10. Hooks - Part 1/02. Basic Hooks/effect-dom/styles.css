@@ -1,0 +1,22 @@
+.top,
+.bottom,
+.left,
+.right {
+    position: absolute;
+}
+
+.top {
+    top: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.bottom {
+    bottom: 0;
+}

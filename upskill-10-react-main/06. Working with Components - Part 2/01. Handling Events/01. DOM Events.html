@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        DOM Events
+    </title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 20px;
+            transition: background 800ms;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            background: blue;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            background: lightblue;
+        }
+
+        button {
+            height: 100px;
+            width: 100px;
+            margin: calc(25% - 50px) calc(50% - 50px);
+            background: lightskyblue;
+        }
+
+        .tracker {
+            background: green;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const html = document.getElementsByTagName("html")[0];
+            const body = document.getElementsByTagName("body")[0];
+            const button = document.getElementById("myButton");
+            const PAUSE = 2000;
+
+            const clickEvent = event => {
+                const phases = {
+                    1: "Capture",
+                    2: "Target",
+                    3: "Bubble"
+                };
+                const ms = event.timeout = (event.timeout + PAUSE) || 0;
+                const target = event.currentTarget;
+                const phase = phases[event.eventPhase];
+
+                setTimeout(() => {
+                    target.classList.add("tracker");
+                    console.log(`Event triggered during '${phase}' phase at: '${target.tagName}'.`);
+                    setTimeout(() => {
+                        target.classList.remove("tracker");
+                    }, PAUSE);
+                }, ms);
+            };
+
+            // Capture (Phase 1)
+            html.addEventListener("click", clickEvent, true);
+            body.addEventListener("click", clickEvent, true);
+
+            // html.addEventListener("click", clickEvent, false);
+            // body.addEventListener("click", clickEvent, false);
+
+            // Target (Phase 2)
+            html.addEventListener("click", clickEvent);
+
+            // Bubble (Phase 3)
+            body.addEventListener("click", clickEvent);
+            // body.addEventListener("click", e => e.stopPropagation());
+
+            button.addEventListener("click", clickEvent);
+        };
+    </script>
+</head>
+
+<body>
+    <button id="myButton">
+        Push
+    </button>
+</body>
+
+</html>
