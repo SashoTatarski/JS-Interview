@@ -1,6 +1,8 @@
-// Calculate and print (using console.log) the average score of each student​ using formula: Average Score = (Subject 1: Score 1 + Subject 1: Score 2 + Subject 2: Score 1 + Subject 2: Score 2) / 4
+// Calculate and print (using console.log) the average score of each student​ using formula: 
+//Average Score = (Subject 1: Score 1 + Subject 1: Score 2 + Subject 2: Score 1 + Subject 2: Score 2) / 4
 
-// Calculate and print (using console.log) TOTAL average score of ALL students​ using formula: Average Score = (Average Score Student 1 + Average Score Student 2 + Average Score Student 3) / 3
+// Calculate and print (using console.log) TOTAL average score of ALL students​ using formula: 
+//Average Score = (Average Score Student 1 + Average Score Student 2 + Average Score Student 3) / 3
 
 // Note: Use only functional programming style and functions composition.
 
@@ -15,7 +17,6 @@ const students = [{
     score: [[90, 70], [80, 30]]
 }];
 
-
 // 1. Example
 students
     .map(({ score }) => score.flat())
@@ -23,17 +24,11 @@ students
     .map(averageScore => console.log(averageScore) || averageScore)
     .reduce((x, y) => x + y) / students.length;
 
-// 2. Cleaner Example
-const normalizeStudentScore = ({ score }) => score.flat();
-const sum = (x, y) => x + y;
-const average = array => array.reduce(sum) / array.length;
-const print = func => averageScore => func(averageScore) || averageScore;
-
-students
-    .map(normalizeStudentScore)
-    .map(average)
-    .map(print(console.log))
-    .reduce(sum) / students.length;
+// Моя разбивка, за четимост
+const normalizeStudentScore = students.map(({ score }) => score.flat());
+const average = normalizeStudentScore.map(array => array.reduce((x, y) => x + y) / array.length);
+const print = average.map(averageScore => console.log(averageScore) || averageScore);
+const reduce = average.reduce((x, y) => x + y / students.length);
 
 // -------------------------------------------------------------------------------------------- //
 
