@@ -1,4 +1,4 @@
-function selectionSort(items, k = items.length) {
+function bubbleSort(items, k = items.length) {
     if (k === 1)
         return console.log(items);
 
@@ -6,7 +6,7 @@ function selectionSort(items, k = items.length) {
         if (items[i] > items[i + 1])
             swap(i);
 
-    selectionSort(items, --k);
+    bubbleSort(items, --k);
 
     function swap(i) {
         let temp = items[i + 1];
@@ -16,7 +16,7 @@ function selectionSort(items, k = items.length) {
 
 }
 
-selectionSort([8, 2, 4, 1, 3]);
+bubbleSort([8, 2, 4, 1, 3]);
 
 // function bubbleSort(items) {
 //     let isSorted;
