@@ -3,12 +3,19 @@
 // Input: “abba”
 // Output: true
 function palindrome(string, left = 0, right = string.length - 1) {
-    if (left >= right) return console.log(true);
-  
-    if (string[left] !== string[right]) return console.log(false);
-    
-    palindrome(string, ++left, --right);
-  }
-  
-  palindrome('abba');
-  
+  if (left >= right) return console.log(true);
+
+  if (string[left] !== string[right]) return console.log(false);
+
+  palindrome(string, ++left, --right);
+}
+
+palindrome('abbaa');
+
+// //----------------------------------------------------------------//
+// const isPalindrome = str => {
+//     return str === str.split('').reverse().join('')
+// }
+
+// console.log(isPalindrome('asbba'))
+//----------------------------------------------------------------//
