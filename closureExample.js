@@ -18,6 +18,28 @@ console.dir(initialClosure)
 // функцията вече се е изпълнила. Способността на фукнцията да пази променлива за бъдеща рефенция, дори след като се е изпълнила, се нарича Closure
 
 // -------------------------------------------------------------------------------------- //
+// const closure = () => {
+//   let count = 0;
+
+//   return {
+//     increment: () => {
+//       count++;
+//     },
+//     getValue: () => {
+//       return count;
+//     }
+//   }
+// }
+
+// const counter = closure();
+// console.log(counter.getValue())
+// counter.increment()
+// console.log(counter.getValue())
+// console.dir(counter)
+
+// // След това върната функция се изпълнява, когато извикаме initialClosure()
+
+// -------------------------------------------------------------------------------------- //
 // Function that keeps track how many times it was called. We can solve it using closure
 
 // function myFunc() {

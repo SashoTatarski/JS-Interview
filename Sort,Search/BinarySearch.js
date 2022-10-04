@@ -1,20 +1,20 @@
-function binarySearch(array, target, left = 0, right = array.length - 1) {
-   // We if that's true, it means that the array has less than element
-   if (right < left)
-      return -1;
+function binarySearch(array, key, left = 0, right = array.length - 1) {  
+  if (right < left) return console.log(false);
 
-   let middle = Math.floor((left + right) / 2);
+  let middle = Math.floor((left + right) / 2);
+  
+  if (key === array[middle]) return console.log(true);
 
-   if (array[middle] === target)
-      return middle;
 
-   if (target < array[middle])
-      return binarySearch(array, target, left, middle - 1);
-
-   return binarySearch(array, target, middle + 1, right);
+  if (key < array[middle])
+    return binarySearch(array, key, left, middle - 1);
+  
+    return binarySearch(array, key, middle + 1, right); 
 }
 
-console.log(binarySearch([1, 3, 5, 6, 7], 1));
+binarySearch([5, 6, 7, 8, 9, 10, 11], 111);
+
+
 
 // function binarySearch(array, target) {
 //     let left = 0;
@@ -34,21 +34,3 @@ console.log(binarySearch([1, 3, 5, 6, 7], 1));
 
 //     return -1;
 // }
-
-// function binarySearch(array, target, left = 0, right = array.length - 1) {
-//    // We if that's true, it means that the array has less than element
-//    if (right < left)
-//       return -1;
-
-//    let middle = Math.floor((left + right) / 2);
-
-//    if (array[middle] === target)
-//       return middle;
-
-//    if (target < array[middle])
-//       return binarySearch(array, target, left, middle - 1);
-
-//    return binarySearch(array, target, middle + 1, right);
-// }
-
-console.log(binarySearch([1, 3, 5, 6, 7], 1));

@@ -1,54 +1,42 @@
-function bubbleSort(items, k = items.length) {
-    if (k === 1)
-        return console.log(items);
+function bubbleSort(array, end = array.length - 1) {
+    if (end === 0) return console.log(array);
 
-    for (let i = 0; i < k; i++)
-        if (items[i] > items[i + 1])
-            swap(i);
+    for (let i = 0; i <= end; i++)
+        if (array[i] > array[i + 1])
+            swap(array, i);
 
-    bubbleSort(items, --k);
+    bubbleSort(array, --end);
+  }
 
-    function swap(i) {
-        let temp = items[i + 1];
-        items[i + 1] = items[i];
-        items[i] = temp;
-    }
+  bubbleSort([6, 1, 4, 3, 8, 9, 2, 5, 7]);
 
-}
+  function swap(array, i) {
+    let temp = array[i];
+    array[i] = array[i + 1];
+    array[i + 1] = temp;
+  }
 
-bubbleSort([8, 2, 4, 1, 3]);
+//------------------------------------------------------------------- //
 
 // function bubbleSort(items) {
-//     let isSorted;
-//     for (let i = 0; i < items.length; i++) {
-//         isSorted = true;
-//         for (let j = 1; j < items.length - i; j++)
-//             if (items[j] < items[j - 1]) {
-//                 swap(j);
-//                 isSorted = false;
-//             }
+//   let isSorted;
+//   for (let i = 0; i < items.length; i++) {
+//     isSorted = true;
+//     for (let j = 1; j < items.length - i; j++)
+//       if (items[j] < items[j - 1]) {
+//         swap(j);
+//         isSorted = false;
+//       }
 
-//         if (isSorted) return;
+//     if (isSorted) return;
+//   }
+//   return items;
 
-//         // Another variation
-//         // while(true) {
-//         //     let isSorted = true;
-//         //     for (let i = 1; i < items.length; i++)
-//         //        if (items[i] < items[i - 1]) {
-//         //           swap(i);
-//         //           isSorted = false;
-//         //        }
-
-//         //     if (isSorted) break;
-//         //  }
-//     }
-//     return items;
-
-//     function swap(j) {
-//         let temp = items[j];
-//         items[j] = items[j - 1];
-//         items[j - 1] = temp;
-//     }
+//   function swap(j) {
+//     let temp = items[j];
+//     items[j] = items[j - 1];
+//     items[j - 1] = temp;
+//   }
 // }
 
 // console.log(bubbleSort([6, 5, 3, 1, 4, 2]));
