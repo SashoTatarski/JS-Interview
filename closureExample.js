@@ -1,9 +1,7 @@
-function closure() {
-  const person = { name: 'Sasho', age: 35 };
+const closure = () => {
+  const person = {name: 'Sasho', age: 35}
 
-  return function () {
-    console.log(person.name); // Has access to obj1 even when the randomFunc function is executed
-  };
+  return () => {console.log(person.name)}  
 }
 
 // Първо се изпълнява closure() и тя връща функция, която запазваме в initialClosure
@@ -18,6 +16,7 @@ console.dir(initialClosure)
 // функцията вече се е изпълнила. Способността на фукнцията да пази променлива за бъдеща рефенция, дори след като се е изпълнила, се нарича Closure
 
 // -------------------------------------------------------------------------------------- //
+
 // const closure = () => {
 //   let count = 0;
 

@@ -4,6 +4,8 @@ const fibonacci = (n) => {
   return fibonacci(n - 2) + fibonacci(n - 1);
 };
 
+fibonacci(4);
+
 // ------------------------------------------- //
 
 // const fibo = (input, first = 0, second = 1, result = 0) => {
