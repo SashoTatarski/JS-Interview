@@ -1,7 +1,7 @@
 const closure = () => {
   const person = {name: 'Sasho', age: 35}
 
-  return () => {console.log(person.name)}  
+  return () => console.log(person.name)  
 }
 
 // Първо се изпълнява closure() и тя връща функция, която запазваме в initialClosure

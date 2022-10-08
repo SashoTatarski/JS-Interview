@@ -1,15 +1,12 @@
 const person = {
   name: 'Sasho',
   talk() {
-    setTimeout(
-      function () {
-        console.log('this in setTimeout', this.name);
-      }.bind(this),
-      1000
-    );
+    setTimeout(function () {
+      console.log('this in setTimeout', this.name);
+    }, 1000);
   },
 };
-//person.talk();
+person.talk();
 
 const person2 = { name: 'Pesho' };
 const getName = person.talk.bind(person2);

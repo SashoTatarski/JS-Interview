@@ -1,31 +1,37 @@
-function numberofOccurences(arr) {
-    let occurrences = [];
-
-    for (let number of arr) {
-        occurrences[number] = (occurrences[number] || 0) + 1;
-    }
-
-    for (let number in occurrences) {
-        console.log(`${occurrences[number]}: ${number}`)
-    }
-
-    for (let number of arr) {
-        if (occurrences[number] % 2 !== 0) occurrences.splice(occurrences[number], 1);
-    }
-
-    for (let number in occurrences) {
-        console.log(`${occurrences[number]}: ${number}`)
-    }
-
-}
-
-numberofOccurences([1, 3, 4, 4, 2, 3, 3, 4, 3, 2]);
-
-// function numberofOccurences(arr) {
-//     return arr.reduce(function (obj, item) {
-//         obj[item] = (obj[item] || 0) + 1;
-//         return obj;
-//     }, {});
-// }
-
-// console.log(numberofOccurences([-1, 2, 2, 3, 4, -5]));
+function numccurrence(array) {
+    const obj = {};
+    const result = array.reduce((obj, item) => {
+      obj[item] = (obj[item] || 0) + 1;
+      return obj;
+    }, obj);
+  
+    return result;
+  }
+  
+  console.log(numOccurrence([1, 2, 3, 3, 4, 1, 1]));
+  
+  // ------------------------------------------------- //
+  
+  // function numOccurrence(array) {
+  //   const result = [];
+  
+  //   for (let num of array) {
+  //     result[num] = (result[num] || 0) + 1;
+  //   }
+  
+  //   return result;
+  // }
+  
+  // console.log(numOccurrence([1, 2, 3, 3, 4, 1, 1]));
+  
+  // ------------------------------------------------- //
+  // Find the number of occurrence of minimum value in an array
+  // const minValue = (arr) => {
+  //     const min = Math.min(...arr);
+  //     return arr.filter((el) => el === min).length;
+  //   };
+    
+  //   const arr = [4, 5, 6, 4, 4];
+  //   console.log(minValue(arr));
+  
+    // ------------------------------------------------- //
