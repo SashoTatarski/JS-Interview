@@ -1,18 +1,44 @@
-let arr1 = [1, 2, 2, 3, 4];
+// We pass an empty array as a default arguement to reduce()
+// Inside we check if acc includes our el and if we have it we return acc, so we don't change anything
+// If we don't have it, then we push it to the empty array with ... spread operator
+removeDuplicates = (array) => {
+  const result = array.reduce((resultArray, currentValue) => {
+    if (!resultArray.includes(currentValue))
+      return [...resultArray, currentValue];
 
-let arr2 = [];
+    return resultArray;
+  }, []);
 
-for (let i = 0; i < arr1.length; i++) {
-  if (arr2.indexOf(arr1[i]) === -1) arr2.push(arr1[i]);
-}
+  return result;
+};
 
-console.log(arr2);
+console.log(removeDuplicates([1,2,2,1,1,3]))
 
-// We store the numbers as keys in the object, because an object key has to be unique
-obj = {};
-for (let i of arr1) obj[i] = true;
+// const arr = [1,2,2,3];
 
-console.log(Object.keys(obj));
+// const result = [... new Set(arr)]
+// console.log(result)
 
-let arrSet = [...new Set(arr1)];
-console.log(arrSet);
+// ------------------------------------------------------------------------- //
+
+// Remove duplicate characters in a string.
+// Input: “Hellooo!!”
+// Output: “Helo!”
+//return [...new Set(str)].join("")
+// function removeDuplicates(str) {
+//     let seen = new Set();
+//     let output = '';
+
+//     for (let ch of str) {
+//         if (!seen.has(ch)) {
+//             seen.add(ch);
+//             output += ch;
+//         }
+//     }
+
+//     return output;
+// }
+
+// console.log(removeDuplicates('Hellooo'));
+
+// ------------------------------------------------------------------------- //
