@@ -1,16 +1,29 @@
+// Step 1
 const person = {
   name: 'Sasho',
   talk() {
-    setTimeout(function () {
-      console.log('this in setTimeout', this.name);
+    setTimeout(() => {
+      console.log(this.name);
     }, 1000);
   },
 };
 person.talk();
 
-const person2 = { name: 'Pesho' };
-const getName = person.talk.bind(person2);
-getName();
+// Step 2 - call
+// const getName = person.talk;
+// person2 = { name: 'Gosho', getName };
+// person2.getName();
+
+// const person2 = { name: 'Gosho' };
+// person.talk.call(person2);
+// person2.talk;
+
+// Step 3 - Bind
+// const person2 = { name: 'Gosho' };
+// const getName = person.talk.bind(person2);
+// getName();
+
+// ----------------------------------------------------- //
 
 // const myCar = {
 //   color: "Blue",
@@ -27,25 +40,4 @@ getName();
 
 // myCar.logColor();
 
-// const person = {
-//   name: 'Sasho',
-//   talk() {
-//     setTimeout(function() {
-//       console.log('this in setTimeout', this.name)
-//     }.bind(this), 1000)
-//   }
-// }
-// //person.talk();
 
-// const person2 = {name: 'Pesho'};
-// const person2Talk = person.talk.bind(person2);
-// person2Talk();
-
-// const person = {
-//   name: 'Sasho',
-//   walk() {
-//     console.log(this.name)
-//   }
-// }
-
-// person.walk();

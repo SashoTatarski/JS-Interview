@@ -1,19 +1,19 @@
-// Check if a string is palindrome. If we read a palindrome string from
-// left or right, we get the exact same characters.
-// Input: “abba”
-// Output: true
-function palindrome(string, left = 0, right = string.length - 1) {
-  if (left >= right) return console.log(true);
+const str = 'As car, a man, a maraca';
+const input = str.replace(/\W/g, '').toLowerCase();
 
-  if (string[left] !== string[right]) return console.log(false);
+const palindrome = (input, left = 0, right = input.length - 1) => {
+  if (left >= right) return true;
+  
+  if (input[left] !== input[right]) return false;
 
-  palindrome(string, ++left, --right);
+  return palindrome(input, ++left, --right);  
 }
 
-palindrome('abbaa');
+console.log(palindrome(input))
 
 // //----------------------------------------------------------------//
 // const isPalindrome = str => {
+//     str = str.replace(/\W/g, '').toLowerCase();
 //     return str === str.split('').reverse().join('')
 // }
 
