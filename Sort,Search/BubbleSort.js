@@ -3,6 +3,8 @@ function bubbleSort(array, end = array.length - 1) {
 
     for (let i = 0; i <= end; i++)
         if (array[i] > array[i + 1])
+        // Shorter way to do a swap
+        //[array[i], array[i + 1]] = [array[i + 1], array[i]];
             swap(array, i);
 
     bubbleSort(array, --end);
