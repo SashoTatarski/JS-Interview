@@ -12,6 +12,13 @@ removeDuplicates = (array) => {
   return result;
 };
 
+// Same as
+// removeDuplicates = (array) => {
+//   return array.reduce((resultArray, currentValue) => {
+//     return array.includes(currentValue) ? resultArray : [...resultArray, currentValue];
+//   }, [])
+// }
+
 console.log(removeDuplicates([1,2,2,1,1,3]))
 
 // const arr = [1,2,2,3];
