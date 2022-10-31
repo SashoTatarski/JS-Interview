@@ -54,25 +54,21 @@ c.radius;
 //       this.#name = name;
 //     }
 
-//     setName(name) {
-//       this.#name = name;
-//     }
+//     get name() {
+  //   return this.#name;
+  // }
 
-//     setSalary(salary) {
-//       this.#salary = salary;
-//     }
+  // set name(name) {
+  //   this.#name = name;
+  // }
 
-//     getName() {
-//       return this.#name;
-//     }
+  // get salary() {
+  //   return this.#salary;
+  // }
 
-//     getId() {
-//       return this.#id;
-//     }
-
-//     getSalary() {
-//       return this.#salary;
-//     }
+  // set salary(salary) {
+  //   this.#salary = salary;
+  // }
 //   }
 
 //   class Manager extends Employee {
